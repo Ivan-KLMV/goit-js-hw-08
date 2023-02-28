@@ -2,9 +2,6 @@ import Player from '@vimeo/player';
 import lodash from 'lodash.throttle';
 const player = new Player('vimeo-player');
 
-const currentTime = localStorage.getItem('videoplayer-current-time');
-console.log(Number(currentTime));
-
 player.on('timeupdate', lodash(onPlay, 1000));
 
 function onPlay(data) {
@@ -15,7 +12,7 @@ function onPlay(data) {
 }
 
 player
-  .setCurrentTime(Number(currentTime))
+  .setCurrentTime(Number(localStorage.getItem('videoplayer-current-time')))
   .then(function (seconds) {
     // seconds = the actual time that the player seeked to
   })
