@@ -1,8 +1,8 @@
 import Player from '@vimeo/player';
-import lodash from 'lodash.throttle';
+import lodashThrottle from 'lodash.throttle';
 const player = new Player('vimeo-player');
 
-player.on('timeupdate', lodash(onPlay, 1000));
+player.on('timeupdate', lodashThrottle(onPlay, 1000));
 
 function onPlay(data) {
   localStorage.setItem(
